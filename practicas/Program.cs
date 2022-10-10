@@ -8,8 +8,14 @@ namespace practicas
 {
     internal class Program
     {
-        static void Main(string[] args)
-        {
+        static void Main(string[] args) {
+
+            Practica1();
+
+        }
+
+        #region Practica1
+        static void Practica1() {
 
             //ej1
             System.Console.Write("Introduzca la medida del radio: ");
@@ -19,5 +25,7 @@ namespace practicas
             Console.WriteLine($"El área del circulo con radio {radio} es: {area}");
 
         }
+        #endregion
+
     }
 }

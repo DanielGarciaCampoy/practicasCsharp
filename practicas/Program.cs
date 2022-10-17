@@ -12,7 +12,7 @@ namespace practicas
         {
 
             //Practica1();
-            //Practica2();
+            Practica2();
             Practica3();
 
         }
@@ -38,7 +38,7 @@ namespace practicas
             Console.WriteLine("Práctica 2:");
 
             const int PUEDE_CONDUCIR = 18;
-            const string TIENE_CARNET = "s";
+            const string TIENE_CARNET = "S";
 
             Console.WriteLine("Vamos a evaluar si puedes conducir");
             Console.Write("Introduce tu edad, por favor: ");
@@ -47,8 +47,8 @@ namespace practicas
             if (edad >= PUEDE_CONDUCIR)
             {
 
-                Console.Write("¿Tienes carnet? s/n: ");
-                string carnet = Console.ReadLine();
+                Console.Write("¿Tienes carnet? S/N: ");
+                string carnet = Console.ReadLine().ToUpper();
                 
                 if (carnet.Equals(TIENE_CARNET))
                 {
@@ -79,8 +79,8 @@ namespace practicas
             Console.WriteLine("Práctica 3:");
 
             const int PUEDE_CONDUCIR = 18;
-            const string TIENE_CARNET = "s";
-            const string NOTIENE_CARTNET = "n";
+            const string TIENE_CARNET = "S";
+            const string NOTIENE_CARTNET = "N";
 
             Console.WriteLine("Vamos a evaluar si puedes conducir");
             Console.Write("Introduce tu edad, por favor: ");
@@ -94,8 +94,8 @@ namespace practicas
 
                 while (!(carnet.Equals(TIENE_CARNET) || carnet.Equals(NOTIENE_CARTNET)))
                 {
-                    Console.Write("Se debe introducir n o s (minuscula): ");
-                    carnet = Console.ReadLine();
+                    Console.Write("Se debe introducir S o N: ");
+                    carnet = Console.ReadLine().ToUpper();
                 }
 
                 if (carnet.Equals(TIENE_CARNET))

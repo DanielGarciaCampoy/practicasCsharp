@@ -12,8 +12,8 @@ namespace practicas
         {
 
             //Practica1();
-            Practica2();
-            //Practica3();
+            //Practica2();
+            Practica3();
 
         }
 
@@ -38,16 +38,16 @@ namespace practicas
             Console.WriteLine("Práctica 2:");
 
             const int PUEDE_CONDUCIR = 18;
-            const string TIENE_CARNET = "S";
+            const string TIENE_CARNET = "s";
 
             Console.WriteLine("Vamos a evaluar si puedes conducir");
             Console.Write("Introduce tu edad, por favor: ");
             int edad = Int32.Parse(Console.ReadLine());
 
-            if (edad >= 18)
+            if (edad >= PUEDE_CONDUCIR)
             {
 
-                Console.Write("¿Tienes carnet? S/N: ");
+                Console.Write("¿Tienes carnet? s/n: ");
                 string carnet = Console.ReadLine();
                 
                 if (carnet.Equals(TIENE_CARNET))
@@ -67,10 +67,51 @@ namespace practicas
         #endregion
 
         #region Practica3
+        /**
+         Modifica el ejemplo anterior para que lea la respuesta en un método llamado LeerRespuesta con el siguiente funcionamiento:
+            - Si se ha introducido N o S devolverá el valor introducido.
+            - Mientras no se introduzca N o S mostrará el mensaje “Se debe introducir N o S” y volverá a leer el valor.
+                Cuando se introduzca el valor correcto, se devolverá.
+         */
         static void Practica3() 
         {
 
+            Console.WriteLine("Práctica 3:");
 
+            const int PUEDE_CONDUCIR = 18;
+            const string TIENE_CARNET = "s";
+            const string NOTIENE_CARTNET = "n";
+
+            Console.WriteLine("Vamos a evaluar si puedes conducir");
+            Console.Write("Introduce tu edad, por favor: ");
+            int edad = Int32.Parse(Console.ReadLine());
+
+            if (edad >= PUEDE_CONDUCIR)
+            {
+
+                Console.Write("¿Tienes carnet? ");
+                string carnet = "";
+
+                while (!(carnet.Equals(TIENE_CARNET) || carnet.Equals(NOTIENE_CARTNET)))
+                {
+                    Console.Write("Se debe introducir n o s (minuscula): ");
+                    carnet = Console.ReadLine();
+                }
+
+                if (carnet.Equals(TIENE_CARNET))
+                {
+                    Console.WriteLine("Tienes carnet, puedes conducir");
+                } 
+                else if (carnet.Equals(NOTIENE_CARTNET))
+                {
+                    Console.WriteLine("Eres mayor de edad pero no tienes carnet, no puedes conducir");
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("No eres mayor de edad, no puedes conducir");
+            }
 
         }
         #endregion

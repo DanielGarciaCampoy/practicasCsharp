@@ -12,8 +12,10 @@ namespace practicas
         {
 
             //Practica1();
-            Practica2();
-            Practica3();
+            //Practica2();
+            //Practica3();
+            Practica4();
+            //Excepciones();
 
         }
 
@@ -73,47 +75,86 @@ namespace practicas
             - Mientras no se introduzca N o S mostrará el mensaje “Se debe introducir N o S” y volverá a leer el valor.
                 Cuando se introduzca el valor correcto, se devolverá.
          */
-        static void Practica3() 
+        static void Practica3()
         {
 
             Console.WriteLine("Práctica 3:");
 
-            const int PUEDE_CONDUCIR = 18;
-            const string TIENE_CARNET = "S";
-            const string NOTIENE_CARTNET = "N";
+            const string REPETIR_BUCLE = "S";
+            string respuesta = string.Empty;
 
-            Console.WriteLine("Vamos a evaluar si puedes conducir");
-            Console.Write("Introduce tu edad, por favor: ");
-            int edad = Int32.Parse(Console.ReadLine());
-
-            if (edad >= PUEDE_CONDUCIR)
+            Console.Write("¿Quieres entrar al bucle? (S/N): ");
+            respuesta = Console.ReadLine().ToUpper();
+            while (!respuesta.Equals("N"))
             {
-
-                Console.Write("¿Tienes carnet? ");
-                string carnet = "";
-
-                while (!(carnet.Equals(TIENE_CARNET) || carnet.Equals(NOTIENE_CARTNET)))
+                Console.Write("¿Quieres seguir en el bucle? (S/N): ");
+                respuesta = Console.ReadLine().ToUpper();
+                if (!(respuesta.Equals(REPETIR_BUCLE) || respuesta.Equals("N")))
                 {
-                    Console.Write("Se debe introducir S o N: ");
-                    carnet = Console.ReadLine().ToUpper();
+                    Console.WriteLine("Se debe introducir N o S");
+                    respuesta = Console.ReadLine().ToUpper();
                 }
-
-                if (carnet.Equals(TIENE_CARNET))
-                {
-                    Console.WriteLine("Tienes carnet, puedes conducir");
-                } 
-                else if (carnet.Equals(NOTIENE_CARTNET))
-                {
-                    Console.WriteLine("Eres mayor de edad pero no tienes carnet, no puedes conducir");
-                }
-
             }
-            else
-            {
-                Console.WriteLine("No eres mayor de edad, no puedes conducir");
-            }
-
+            Console.WriteLine("Has salido del bucle");
         }
+        #endregion
+
+        #region Practica4
+        //Transforma el ejemplo del bucle while (diapositiva 58) para realizarlo con un bucle do-while.
+        static void Practica4()
+        {
+            Console.WriteLine("Práctica 4:");
+
+            const string REPETIR_BUCLE = "S";
+            string respuesta = string.Empty;
+
+            Console.Write("¿Quieres entrar al bucle? (S/N): ");
+            respuesta = Console.ReadLine().ToUpper();
+            if (respuesta.Equals(REPETIR_BUCLE))
+            {
+                do
+                {
+                    Console.Write("¿Quieres seguir en el bucle? (S/N): ");
+                    respuesta = Console.ReadLine().ToUpper();
+                    if (!(respuesta.Equals(REPETIR_BUCLE) || respuesta.Equals("N")))
+                    {
+                        Console.WriteLine("Se debe introducir N o S");
+                        respuesta = Console.ReadLine().ToUpper();
+                    }
+                } while (!respuesta.Equals("N"));
+            }
+            Console.WriteLine("Has salido del bucle");
+        }
+        #endregion
+
+        #region Excepciones
+
+        static void Excepciones()
+        {
+            try
+            {
+                Console.WriteLine("Introduce un num:");
+                int valor = int.Parse(Console.ReadLine());
+                Console.WriteLine($"Se ha leido {valor}");
+            } 
+            catch(FormatException ex)
+            {
+                Console.WriteLine("El formato del núm no es correcto");
+            } 
+            catch (OverflowException ex)
+            {
+                Console.WriteLine("El num introducido es demasiado grande");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Fin del método");
+            }
+        }
+
         #endregion
 
     }
